@@ -90,8 +90,8 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
       }
 
       // Redirigir al checkout de Mercado Pago
-      // En desarrollo usa sandboxInitPoint, en producción usa initPoint
-      const checkoutUrl = data.sandboxInitPoint || data.initPoint;
+      // En producción usa initPoint, en desarrollo usa sandboxInitPoint
+      const checkoutUrl = data.initPoint || data.sandboxInitPoint;
       
       if (checkoutUrl) {
         window.location.href = checkoutUrl;
