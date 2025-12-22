@@ -1,1 +1,3 @@
 MY_ARCHIVE_SHOP.md
+node_modules
+.env.local
