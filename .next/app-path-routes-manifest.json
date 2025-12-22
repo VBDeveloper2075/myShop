@@ -1,0 +1,10 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/checkout/route": "/api/checkout",
+  "/api/webhooks/mercadopago/route": "/api/webhooks/mercadopago",
+  "/checkout/failure/page": "/checkout/failure",
+  "/checkout/pending/page": "/checkout/pending",
+  "/checkout/success/page": "/checkout/success",
+  "/page": "/"
+}

@@ -39,6 +39,14 @@ export async function POST(request: NextRequest) {
         ? calculateTransferPrice(product.price)
         : product.price;
 
+    // Obtener URL base - prioridad: env var > Vercel URL > request host
+    const baseUrl = 
+      process.env.NEXT_PUBLIC_BASE_URL || 
+      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+      `https://${request.headers.get("host")}`;
+
+    console.log("Base URL:", baseUrl);
+
     // Configurar métodos de pago según selección
     const excludedPaymentTypes =
       paymentMethod === "transfer"
@@ -62,23 +70,23 @@ export async function POST(request: NextRequest) {
         },
       ],
       payer: {
-        email: "test_user@testuser.com",
+        email: "comprador@email.com",
       },
       payment_methods: {
         excluded_payment_types: excludedPaymentTypes,
         installments: paymentMethod === "card" ? 3 : 1,
       },
       back_urls: {
-        success: "http://localhost:3000/checkout/success",
-        failure: "http://localhost:3000/checkout/failure",
-        pending: "http://localhost:3000/checkout/pending",
+        success: `${baseUrl}/checkout/success`,
+        failure: `${baseUrl}/checkout/failure`,
+        pending: `${baseUrl}/checkout/pending`,
       },
       auto_return: "approved",
       external_reference: productId,
       statement_descriptor: "MY ARCHIVE SHOP",
     };
 
-    console.log("Creating preference via API...");
+    console.log("Creating preference...");
 
     const response = await fetch("https://api.mercadopago.com/checkout/preferences", {
       method: "POST",
