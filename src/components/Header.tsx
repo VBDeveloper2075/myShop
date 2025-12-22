@@ -15,7 +15,7 @@ export function Header() {
         </div>
         
         <a
-          href="https://cbagency.com"
+          href="https://si-cb-vendes-mejor.com.ar"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-1.5 text-xs text-zinc-400 transition-colors hover:text-zinc-900"
