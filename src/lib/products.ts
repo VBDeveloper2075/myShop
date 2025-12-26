@@ -36,9 +36,9 @@ export const products: Product[] = [
     conditionDescription: "Funcionando perfectamente. Gabinete con marcas de uso normales. Interior limpio. Todos los puertos funcionan: USB, audio, VGA, DVI, HDMI (por GPU). Se entrega con cable de alimentación y cable HDMI. Lista para usar.",
     stock: 1,
     images: [
-      "/images/pc-desktop-i7/pc-desktop-i7-2600-geforce-gts450-16gb-ram-usada-barata.jpg",
-      "/images/pc-desktop-i7/pc-desktop-i7-interior-geforce-gts450-foxconn-hdd.jpg",
-      "/images/pc-desktop-i7/pc-desktop-i7-kubuntu-sistema-operativo-linux.jpg",
+      "/images/pc-desktop-i7/pc-desktop-i7pc-desktop-i7-2600-geforce-gts450-16gb-ram-usada-barata.jpeg",
+      "/images/pc-desktop-i7/pc-desktop-i7-interior-geforce-gts450-foxconn-hdd.jpeg",
+      "/images/pc-desktop-i7/pc-desktop-i7-kubuntu-sistema-operativo-linux.jpeg",
     ],
     category: "Tecnología",
     featured: true,
