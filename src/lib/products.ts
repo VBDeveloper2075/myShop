@@ -30,7 +30,7 @@ export const products: Product[] = [
     id: "pc-desktop-i7-2600",
     name: "PC Desktop Intel Core i7-2600",
     description: "PC de escritorio potente con procesador Intel Core i7-2600 @ 3.40GHz (4 núcleos, 8 hilos). 16GB RAM DDR3. Placa de video dedicada NVIDIA GeForce GTS 450. Fuente RGPS 600W certificada. Incluye HDD. Sistema Kubuntu 23.04 instalado y funcionando (se puede instalar Windows si lo preferís). Ideal para oficina, programación, navegación o tareas multimedia.",
-    price: 180000,
+    price: 380000,
     condition: "buen-estado",
     conditionLabel: "Buen estado",
     conditionDescription: "Funcionando perfectamente. Gabinete con marcas de uso normales. Interior limpio. Todos los puertos funcionan: USB, audio, VGA, DVI, HDMI (por GPU). Se entrega con cable de alimentación y cable HDMI. Lista para usar.",
