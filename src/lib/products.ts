@@ -27,17 +27,18 @@ export const conditionColors: Record<ProductCondition, string> = {
 
 export const products: Product[] = [
   {
-    id: "pc-desktop-gaming",
-    name: "PC Desktop Gaming i7",
-    description: "PC de escritorio armada con Intel Core i7-9700K, 32GB RAM DDR4, RTX 2070 Super 8GB, SSD NVMe 1TB + HDD 2TB. Gabinete NZXT H510 con buena gestión de cables. Ideal para gaming 1440p o trabajo de edición. Incluye Windows 11 Pro activado.",
-    price: 850000,
-    condition: "muy-buen-estado",
-    conditionLabel: "Muy buen estado",
-    conditionDescription: "Funcionamiento perfecto. Algunos rayones mínimos en el gabinete. Componentes internos impecables, nunca overclockeados. Se entrega limpia y con pasta térmica nueva.",
+    id: "pc-desktop-i7-2600",
+    name: "PC Desktop Intel Core i7-2600",
+    description: "PC de escritorio potente con procesador Intel Core i7-2600 @ 3.40GHz (4 núcleos, 8 hilos). 16GB RAM DDR3. Placa de video dedicada NVIDIA GeForce GTS 450. Fuente RGPS 600W certificada. Incluye HDD. Sistema Kubuntu 23.04 instalado y funcionando (se puede instalar Windows si lo preferís). Ideal para oficina, programación, navegación o tareas multimedia.",
+    price: 180000,
+    condition: "buen-estado",
+    conditionLabel: "Buen estado",
+    conditionDescription: "Funcionando perfectamente. Gabinete con marcas de uso normales. Interior limpio. Todos los puertos funcionan: USB, audio, VGA, DVI, HDMI (por GPU). Se entrega con cable de alimentación y cable HDMI. Lista para usar.",
     stock: 1,
     images: [
-      "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80",
-      "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=800&q=80",
+      "/images/pc-desktop-i7/pc-desktop-i7-2600-geforce-gts450-16gb-ram-usada-barata.jpg",
+      "/images/pc-desktop-i7/pc-desktop-i7-interior-geforce-gts450-foxconn-hdd.jpg",
+      "/images/pc-desktop-i7/pc-desktop-i7-kubuntu-sistema-operativo-linux.jpg",
     ],
     category: "Tecnología",
     featured: true,
@@ -98,7 +99,7 @@ export const products: Product[] = [
     conditionDescription: "Libro leído una vez con sumo cuidado. Tapa y páginas impecables. Sin marcas, subrayados ni dedicatorias. Lomo perfecto. Edición especial con sello Premio Nobel 2023.",
     stock: 1,
     images: [
-      "/images/libros/septologia-jon-fosse-premio-nobel-2023-seix-barral.jpg",
+      "/images/libros/septologia-jon-fosse-premio-nobel-2023-seix-barral.jpg.jpeg",
     ],
     category: "Libros",
     featured: true,
