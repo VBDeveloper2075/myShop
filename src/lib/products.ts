@@ -84,7 +84,7 @@ export const products: Product[] = [
     images: [
       "/images/impresora-brother/impresora-brother-cb-jamstack-agency-myshop-usada-wifi-barata.jpg",
       "/images/impresora-brother/impresora-usada-regalo-cartucho.jpg",
-      "/images/impresora-brother/impresora-brother-wifi-cartuchos-regalo barato usado.jpg",
+      "/images/impresora-brother/impresora-brother-wifi-cartuchos-regalo-barato-usado.jpg",
       "/images/impresora-brother/impresora-cartuchos-regalo-tienda-usado.jpg",
     ],
     category: "Tecnología",
