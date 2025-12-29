@@ -241,12 +241,12 @@ export default function RopaPage() {
                 </div>
 
                 <a
-                  href={`https://wa.me/5491112345678?text=Hola! Me interesa: ${selectedItem.name} (${selectedItem.size ? `Talle ${selectedItem.size}` : 'Sin talle'}) - ${formatPrice(selectedItem.price)}`}
+                  href={`https://wa.me/5491157966147?text=¡Hola! 👋 Vi este producto en MY ARCHIVE y me encantaría saber más:%0A%0A🛍️ *${selectedItem.name}*%0A${selectedItem.size ? `📏 Talle: ${selectedItem.size}%0A` : ''}💰 Precio: ${formatPrice(selectedItem.price)}%0A%0A¿Está disponible? ¿Podríamos coordinar?`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full block text-center py-4 bg-zinc-900 text-white font-medium hover:bg-zinc-800 transition-colors"
+                  className="w-full block text-center py-4 bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-colors rounded-lg"
                 >
-                  Consultar por WhatsApp
+                  💬 Consultar por WhatsApp
                 </a>
               </div>
             </div>

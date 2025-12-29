@@ -35,13 +35,13 @@ function SuccessContent() {
 
         <div className="space-y-3">
           <a
-            href="https://wa.me/5491100000000?text=Hola! Acabo de realizar una compra"
+            href={`https://wa.me/5491157966147?text=¡Hola! 🎉 Acabo de realizar una compra en MY ARCHIVE.%0A%0A🔖 ID de pago: ${paymentId || 'No disponible'}%0A%0A¡Quedo atento para coordinar la entrega! 📦`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full bg-emerald-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-emerald-700 transition-colors"
           >
             <MessageCircle className="w-5 h-5" />
-            Contactar por WhatsApp
+            💬 Coordinar entrega por WhatsApp
           </a>
 
           <Link
