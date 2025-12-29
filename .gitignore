@@ -2,7 +2,6 @@ MY_ARCHIVE_SHOP.md
 node_modules
 .env.local
 .next
-next.config.js
 next-env.d.ts
 
 
