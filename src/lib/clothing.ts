@@ -85,6 +85,18 @@ export const clothingItems: ClothingItem[] = [
 
   // MUJER
   {
+    id: "saco-mauro-sergio-jacquard",
+    name: "Saco Tejido Largo Jacquard Mauro Sergio",
+    description: "Saco largo tejido jacquard de manga caída sin botones. Marca Mauro Sergio, colección Otoño/Invierno. Hilado rústico poliacrílico con lana. Alta capacidad calórica, ideal como segunda piel. Estilo elegante y cómodo. Estado impecable.",
+    price: 12000,
+    condition: "como-nuevo",
+    conditionLabel: "Como nuevo",
+    size: "M",
+    brand: "Mauro Sergio",
+    images: ["/images/sacon-jackard-mauro-sergio-usado/sacon-mauro-sergio-hermoso-impecable.png"],
+    category: "mujer",
+  },
+  {
     id: "vestido-hym-mujer",
     name: "Vestido H&M Floral Verano",
     description: "Vestido midi H&M con estampado floral. Tela liviana y fresca. Escote en V con botones decorativos. Perfecto para primavera-verano.",
