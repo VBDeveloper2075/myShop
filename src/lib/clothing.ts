@@ -97,6 +97,18 @@ export const clothingItems: ClothingItem[] = [
     category: "mujer",
   },
   {
+    id: "vestido-naranja-brasil",
+    name: "Vestido Naranja Brasilero",
+    description: "Hermoso vestido naranja de origen brasilero. Tela de excelente calidad, con un solo uso. Corte elegante y favorecedor. Ideal para eventos especiales o salidas de verano.",
+    price: 30000,
+    condition: "como-nuevo",
+    conditionLabel: "Como nuevo",
+    size: "M",
+    brand: "Brasil",
+    images: ["/images/vestido-naranja-brasil/vestido-brasilero-excelente-calidad-usado.png"],
+    category: "mujer",
+  },
+  {
     id: "vestido-hym-mujer",
     name: "Vestido H&M Floral Verano",
     description: "Vestido midi H&M con estampado floral. Tela liviana y fresca. Escote en V con botones decorativos. Perfecto para primavera-verano.",
