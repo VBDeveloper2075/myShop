@@ -107,8 +107,19 @@ export async function POST(request: NextRequest) {
     const reply = completion.choices[0]?.message?.content || "Lo siento, no pude procesar tu mensaje.";
 
     return NextResponse.json({ reply });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Chat API error:", error);
+    
+    // Manejar error de cuota excedida
+    const isQuotaError = error instanceof Error && 
+      ('code' in error && (error as { code?: string }).code === 'insufficient_quota');
+    
+    if (isQuotaError) {
+      return NextResponse.json({
+        reply: "¡Hola! 👋 Nuestro asistente está temporalmente ocupado. Mientras tanto, podés:\n\n📱 Escribirnos por WhatsApp: **11 5796 6147**\n🛍️ Ver todos los productos en la tienda\n\n¡Gracias por tu paciencia!"
+      });
+    }
+    
     return NextResponse.json(
       { error: "Error al procesar el mensaje" },
       { status: 500 }

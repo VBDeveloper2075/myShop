@@ -16,6 +16,7 @@ export interface Product {
   images: string[];
   category: string;
   featured?: boolean;
+  sold?: boolean; // Producto vendido
 }
 
 export const conditionColors: Record<ProductCondition, string> = {
@@ -57,6 +58,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     ],
     category: "Radioafición",
+    sold: true,
   },
   {
     id: "conservadora-black-decker-bdc204",
@@ -72,7 +74,6 @@ export const products: Product[] = [
       "/images/conservadora-frio-calor-black-y-decker/nevera-conservadora-encendedor-auto-12-voltios-black-decker.jpeg",
       "/images/conservadora-frio-calor-black-y-decker/nevera-conservadora-encendedor-auto-12-voltios-black-y-decker.jpeg",
       "/images/conservadora-frio-calor-black-y-decker/nevera-conservadora-encendedor-auto-frio-y-calor-12-voltios-black-y-decker.jpeg",
-      "/images/conservadora-frio-calor-black-y-decker/nevera-conservadora-encendedor-de-auto-12-voltios-black-y-decker.jpeg",
       "/images/conservadora-frio-calor-black-y-decker/conservadora-black-decker-bdc204-caja-original.jpeg",
     ],
     category: "Camping",
@@ -147,9 +148,42 @@ export const products: Product[] = [
     conditionDescription: "Caja usada pero muy bien cuidada. Estructura sólida sin fisuras ni roturas. Trabas funcionando perfectamente. Bandeja interior completa. Lista para durar otros 20 años.",
     stock: 1,
     images: [
-      "/images/caja-herramientas/caja-herramientas-resistente-grande-con-bandeja-interior-sana.jpeg",
+      "/images/caja-herramientas/caja-herramientas-resistente-grande-con-bandeja-interior-usada.jpeg",
     ],
     category: "Herramientas",
+  },
+  {
+    id: "escaladora-eliptica-usada",
+    name: "Escaladora Elíptica",
+    description: "Escaladora elíptica para ejercicio en casa. Estructura metálica resistente. Movimiento suave y silencioso. Ideal para cardio sin impacto en las articulaciones. Incluye repuestos. Perfecta para mantenerse en forma sin salir de casa.",
+    price: 85000,
+    condition: "buen-estado",
+    conditionLabel: "Buen estado",
+    conditionDescription: "Funciona correctamente. Estructura firme y estable. Algunos signos de uso estético. Se incluyen repuestos adicionales. Lista para usar.",
+    stock: 1,
+    images: [
+      "/images/escaladora-usada/escaladora-usada-buen-estado-con-repuestos.jpeg",
+      "/images/escaladora-usada/escaladora-usada-se-vende-buen-estado-caseros.jpeg",
+    ],
+    category: "Fitness",
+    featured: true,
+  },
+  {
+    id: "tablero-dibujo-tecnico-n6",
+    name: "Tablero de Dibujo Técnico con Carpeta N°6",
+    description: "Tablero de dibujo técnico profesional con carpeta tamaño N°6 incluida. Ideal para estudiantes de arquitectura, diseño o ingeniería. Superficie lisa perfecta para trabajo de precisión. La carpeta protege tus láminas y trabajos.",
+    price: 35000,
+    condition: "muy-buen-estado",
+    conditionLabel: "Muy buen estado",
+    conditionDescription: "Tablero en excelente estado. Superficie sin rayones profundos. Carpeta N°6 incluida y en buen estado. Listo para usar en tus proyectos.",
+    stock: 1,
+    images: [
+      "/images/tablero-tecnico-con-carpeta-numero-seis/tablero-dibujo-tecnico-con-carpeta-numero-seis.jpeg",
+      "/images/tablero-tecnico-con-carpeta-numero-seis/tablero-tecnico-con-carpeta-numero-seis-se-vende.jpeg",
+      "/images/tablero-tecnico-con-carpeta-numero-seis/tablero-tecnico-con-carpeta-numero-seis.jpeg",
+      "/images/tablero-tecnico-con-carpeta-numero-seis/tablero-tecnico-con-carpeta.jpeg",
+    ],
+    category: "Educación",
   },
 ];
 

@@ -17,6 +17,7 @@ export interface ClothingItem {
   brand?: string;
   images: string[];
   category: ClothingCategory;
+  sold?: boolean; // Producto vendido
 }
 
 export const clothingConditionColors: Record<ClothingCondition, string> = {
@@ -45,6 +46,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Levi's",
     images: ["https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&q=80"],
     category: "hombre",
+    sold: true,
   },
   {
     id: "blazer-zara-hombre",
@@ -57,6 +59,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Zara",
     images: ["https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80"],
     category: "hombre",
+    sold: true,
   },
   {
     id: "remera-nike-hombre",
@@ -69,6 +72,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Nike",
     images: ["https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=800&q=80"],
     category: "hombre",
+    sold: true,
   },
   {
     id: "pantalon-dockers-hombre",
@@ -81,6 +85,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Dockers",
     images: ["https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80"],
     category: "hombre",
+    sold: true,
   },
 
   // MUJER
@@ -109,6 +114,22 @@ export const clothingItems: ClothingItem[] = [
     category: "mujer",
   },
   {
+    id: "zapatos-picadilly-azul",
+    name: "Zapatos Picadilly Azul Taco Medio",
+    description: "Elegantes zapatos Picadilly color azul combinado. Taco medio cómodo para uso diario o eventos. Marca brasilera reconocida por su confort. Excelente estado, poco uso.",
+    price: 25000,
+    condition: "como-nuevo",
+    conditionLabel: "Como nuevo",
+    size: "37",
+    brand: "Picadilly",
+    images: [
+      "/images/zapatos-azul-taco-medio-picadilly/zapatos-azul-combinado-taco-medio-picadilly.jpeg",
+      "/images/zapatos-azul-taco-medio-picadilly/zapatos-azul-taco-medio-picadilly-se-vende.jpeg",
+      "/images/zapatos-azul-taco-medio-picadilly/zapatos-azul-taco-medio-picadilly.jpeg",
+    ],
+    category: "mujer",
+  },
+  {
     id: "vestido-hym-mujer",
     name: "Vestido H&M Floral Verano",
     description: "Vestido midi H&M con estampado floral. Tela liviana y fresca. Escote en V con botones decorativos. Perfecto para primavera-verano.",
@@ -119,6 +140,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "H&M",
     images: ["https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&q=80"],
     category: "mujer",
+    sold: true,
   },
   {
     id: "blazer-mango-mujer",
@@ -131,6 +153,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Mango",
     images: ["https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=800&q=80"],
     category: "mujer",
+    sold: true,
   },
   {
     id: "jeans-levis-mujer",
@@ -143,6 +166,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Levi's",
     images: ["https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&q=80"],
     category: "mujer",
+    sold: true,
   },
   {
     id: "blusa-massimo-mujer",
@@ -155,6 +179,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Massimo Dutti",
     images: ["https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=800&q=80"],
     category: "mujer",
+    sold: true,
   },
 
   // ACCESORIOS
@@ -168,6 +193,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Michael Kors",
     images: ["https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80"],
     category: "accesorios",
+    sold: true,
   },
   {
     id: "reloj-casio-vintage",
@@ -179,6 +205,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Casio",
     images: ["https://images.unsplash.com/photo-1533139502658-0198f920d8e8?w=800&q=80"],
     category: "accesorios",
+    sold: true,
   },
   {
     id: "bufanda-burberry",
@@ -190,6 +217,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Burberry",
     images: ["https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800&q=80"],
     category: "accesorios",
+    sold: true,
   },
   {
     id: "anteojos-rayban-aviator",
@@ -201,6 +229,7 @@ export const clothingItems: ClothingItem[] = [
     brand: "Ray-Ban",
     images: ["https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80"],
     category: "accesorios",
+    sold: true,
   },
 ];
 
