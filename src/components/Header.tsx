@@ -26,7 +26,7 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold tracking-tight text-zinc-900">
-              MY ARCHIVE
+              SE VENDE
             </span>
             <span className="text-zinc-300">/</span>
             <span className="text-sm font-medium text-zinc-500">STORE</span>

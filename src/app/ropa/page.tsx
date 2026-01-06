@@ -54,7 +54,7 @@ export default function RopaPage() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-2">
             <a href="/" className="text-sm font-semibold tracking-tight text-zinc-900 hover:text-zinc-600 transition-colors">
-              MY ARCHIVE
+              SE VENDE
             </a>
             <span className="text-zinc-300">/</span>
             <span className="text-sm font-medium text-zinc-500">ROPA</span>
@@ -260,7 +260,7 @@ export default function RopaPage() {
                 </div>
 
                 <a
-                  href={`https://wa.me/5491157966147?text=¡Hola! 👋 Vi este producto en MY ARCHIVE y me encantaría saber más:%0A%0A🛍️ *${selectedItem.name}*%0A${selectedItem.size ? `📏 Talle: ${selectedItem.size}%0A` : ''}💰 Precio: ${formatPrice(selectedItem.price)}%0A%0A¿Está disponible? ¿Podríamos coordinar?`}
+                  href={`https://wa.me/5491157966147?text=¡Hola! 👋 Vi este producto en SE VENDE y me encantaría saber más:%0A%0A🛍️ *${selectedItem.name}*%0A${selectedItem.size ? `📏 Talle: ${selectedItem.size}%0A` : ''}💰 Precio: ${formatPrice(selectedItem.price)}%0A%0A¿Está disponible? ¿Podríamos coordinar?`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full block text-center py-4 bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-colors rounded-lg"

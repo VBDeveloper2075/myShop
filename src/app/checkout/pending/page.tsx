@@ -35,7 +35,7 @@ function PendingContent() {
 
         <div className="space-y-3">
           <a
-            href={`https://wa.me/5491157966147?text=¡Hola! 👋 Realicé un pago en MY ARCHIVE y está pendiente de acreditación.%0A%0A🔖 ID de pago: ${paymentId || 'No disponible'}%0A%0A¿Podrían ayudarme a verificar el estado?`}
+            href={`https://wa.me/5491157966147?text=¡Hola! 👋 Realicé un pago en SE VENDE y está pendiente de acreditación.%0A%0A🔖 ID de pago: ${paymentId || 'No disponible'}%0A%0A¿Podrían ayudarme a verificar el estado?`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 w-full bg-amber-600 text-white py-3 px-4 rounded-xl font-medium hover:bg-amber-700 transition-colors"

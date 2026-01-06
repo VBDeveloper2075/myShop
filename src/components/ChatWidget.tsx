@@ -13,7 +13,7 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "¡Hola! 👋 Soy el asistente de MY ARCHIVE. ¿En qué puedo ayudarte hoy?",
+      content: "¡Hola! 👋 Soy el asistente de SE VENDE. ¿En qué puedo ayudarte hoy?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -128,7 +128,7 @@ export function ChatWidget() {
                 <Bot className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-white">Asistente MY ARCHIVE</h3>
+                <h3 className="font-semibold text-white">Asistente SE VENDE</h3>
                 <p className="text-xs text-zinc-400">Respuestas con IA • Online</p>
               </div>
             </div>

@@ -5,7 +5,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const SYSTEM_PROMPT = `Eres el asistente virtual de MY ARCHIVE STORE, una página de barrio para comerciar productos usados en Caseros, Buenos Aires, Argentina.
+const SYSTEM_PROMPT = `Eres el asistente virtual de SE VENDE , una página de barrio para comerciar productos usados en Caseros, Buenos Aires, Argentina.
 
 === SOBRE NOSOTROS ===
 Somos una plataforma local que conecta vecinos para comprar y vender productos usados.

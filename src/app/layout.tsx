@@ -4,7 +4,7 @@ import { ChatWidget } from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "SE VENDE",
-  description: "Artículos usados en venta. Ítems únicos. Caseros, Buenos Aires. Precios finales.",
+  description: "Artículos Usados - Se Vende. Ítems únicos. Zona Caseros, Buenos Aires",
   icons: {
     icon: "/images/se-vende.jpg",
   },
