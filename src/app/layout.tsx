@@ -3,8 +3,11 @@ import "./globals.css";
 import { ChatWidget } from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
-  title: "MY ARCHIVE / STORE",
-  description: "Colección personal en venta. Ítems únicos. Envío rápido. Precios finales.",
+  title: "SE VENDE",
+  description: "Artículos usados en venta. Ítems únicos. Caseros, Buenos Aires. Precios finales.",
+  icons: {
+    icon: "/images/se-vende.jpg",
+  },
 };
 
 export default function RootLayout({
