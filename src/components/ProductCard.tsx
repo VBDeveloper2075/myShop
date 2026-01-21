@@ -1,15 +1,21 @@
 "use client";
 
-import Image from "next/image";
-import { Product, conditionColors, formatPrice } from "@/lib/products";
+import { SanityImage } from "./SanityImage";
+import { 
+  SanityProduct, 
+  conditionLabels, 
+  conditionColors, 
+  formatPrice,
+  productCategoryLabels
+} from "@/lib/sanity-types";
 
 interface ProductCardProps {
-  product: Product;
-  onClick: (product: Product) => void;
+  product: SanityProduct;
+  onClick: (product: SanityProduct) => void;
 }
 
 export function ProductCard({ product, onClick }: ProductCardProps) {
-  const isSold = product.sold === true;
+  const isSold = product.inStock === false;
   
   return (
     <article
@@ -20,16 +26,15 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
     >
       {/* Image Container */}
       <div className="relative aspect-square overflow-hidden bg-zinc-100">
-        <Image
-          src={product.images[0]}
-          alt={product.name}
-          fill
-          className={`product-image object-cover ${isSold ? "grayscale" : ""}`}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAwEPwAB//9k="
-        />
+        {product.images?.[0] && (
+          <SanityImage
+            image={product.images[0]}
+            alt={`${product.title} usado en Caseros`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className={`product-image object-cover ${isSold ? "grayscale" : ""}`}
+          />
+        )}
         
         {/* SOLD Badge */}
         {isSold && (
@@ -48,7 +53,7 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
                 conditionColors[product.condition]
               }`}
             >
-              {product.conditionLabel}
+              {conditionLabels[product.condition]}
             </span>
           </div>
         )}
@@ -67,14 +72,14 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
       {/* Content */}
       <div className="p-4">
         <div className="mb-1 text-xs font-medium uppercase tracking-wider text-zinc-400">
-          {product.category}
+          {productCategoryLabels[product.category] || product.category}
         </div>
         <h3 className={`text-base font-medium line-clamp-2 ${isSold ? "text-zinc-500" : "text-zinc-900"}`}>
-          {product.name}
+          {product.title}
         </h3>
         <div className="mt-3 flex items-baseline gap-2">
           <span className={`text-lg font-semibold ${isSold ? "text-zinc-400 line-through" : "text-zinc-900"}`}>
-            {formatPrice(product.price)}
+            {formatPrice(product.listPrice)}
           </span>
           {!isSold && (
             <span className="text-xs text-zinc-400">
@@ -86,6 +91,3 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
     </article>
   );
 }
-
-
-

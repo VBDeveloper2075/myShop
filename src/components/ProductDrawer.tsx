@@ -1,17 +1,19 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { X, CreditCard, Building2, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { SanityImage } from "./SanityImage";
 import {
-  Product,
+  SanityProduct,
   conditionColors,
+  conditionLabels,
   formatPrice,
   calculateTransferPrice,
-} from "@/lib/products";
+  productCategoryLabels,
+} from "@/lib/sanity-types";
 
 interface ProductDrawerProps {
-  product: Product | null;
+  product: SanityProduct | null;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -78,7 +80,7 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          productId: product.id,
+          productId: product._id,
           paymentMethod: paymentMethod,
         }),
       });
@@ -90,7 +92,6 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
       }
 
       // Redirigir al checkout de Mercado Pago
-      // En producción usa initPoint, en desarrollo usa sandboxInitPoint
       const checkoutUrl = data.initPoint || data.sandboxInitPoint;
       
       if (checkoutUrl) {
@@ -107,18 +108,22 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
 
   if (!product || (!isOpen && !isClosing)) return null;
 
-  const transferPrice = calculateTransferPrice(product.price);
-  const finalPrice = paymentMethod === "card" ? product.price : transferPrice;
-  const discount = Math.round((1 - transferPrice / product.price) * 100);
+  const transferPrice = calculateTransferPrice(product.listPrice, product.transferPrice);
+  const finalPrice = paymentMethod === "card" ? product.listPrice : transferPrice;
+  const discount = Math.round((1 - transferPrice / product.listPrice) * 100);
 
   const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % product.images.length);
+    if (product.images?.length) {
+      setCurrentImage((prev) => (prev + 1) % product.images.length);
+    }
   };
 
   const prevImage = () => {
-    setCurrentImage(
-      (prev) => (prev - 1 + product.images.length) % product.images.length
-    );
+    if (product.images?.length) {
+      setCurrentImage(
+        (prev) => (prev - 1 + product.images.length) % product.images.length
+      );
+    }
   };
 
   return (
@@ -149,19 +154,19 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
         <div className="flex h-full flex-col overflow-y-auto">
           {/* Image Gallery */}
           <div className="relative aspect-square w-full shrink-0 bg-zinc-100">
-            <Image
-              src={product.images[currentImage]}
-              alt={product.name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, 512px"
-              priority
-              placeholder="blur"
-              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAwEPwAB//9k="
-            />
+            {product.images?.[currentImage] && (
+              <SanityImage
+                image={product.images[currentImage]}
+                alt={`${product.title} usado en Caseros`}
+                fill
+                sizes="(max-width: 640px) 100vw, 512px"
+                priority
+                className="object-cover"
+              />
+            )}
 
             {/* Image Navigation */}
-            {product.images.length > 1 && (
+            {product.images && product.images.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
@@ -200,7 +205,7 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
                   conditionColors[product.condition]
                 }`}
               >
-                {product.conditionLabel}
+                {conditionLabels[product.condition]}
               </span>
             </div>
           </div>
@@ -208,10 +213,10 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
           {/* Product Info */}
           <div className="flex flex-1 flex-col p-6">
             <div className="mb-1 text-xs font-medium uppercase tracking-wider text-zinc-400">
-              {product.category}
+              {productCategoryLabels[product.category] || product.category}
             </div>
             <h2 className="text-xl font-semibold text-zinc-900">
-              {product.name}
+              {product.title}
             </h2>
 
             {/* Description */}
@@ -220,14 +225,16 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
             </p>
 
             {/* Condition Details */}
-            <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-4">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-zinc-500">
-                Estado del producto
-              </h3>
-              <p className="mt-2 text-sm text-zinc-700">
-                {product.conditionDescription}
-              </p>
-            </div>
+            {product.conditionDescription && (
+              <div className="mt-6 rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+                <h3 className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+                  Estado del producto
+                </h3>
+                <p className="mt-2 text-sm text-zinc-700">
+                  {product.conditionDescription}
+                </p>
+              </div>
+            )}
 
             {/* Stock Indicator */}
             <div className="mt-4 flex items-center gap-2">
@@ -264,7 +271,7 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
                       paymentMethod === "card" ? "text-white" : "text-zinc-900"
                     }`}
                   >
-                    {formatPrice(product.price)}
+                    {formatPrice(product.listPrice)}
                   </div>
                   <div
                     className={`mt-1 text-xs ${
@@ -316,7 +323,7 @@ export function ProductDrawer({ product, isOpen, onClose }: ProductDrawerProps) 
                           : "text-zinc-400"
                       }`}
                     >
-                      {formatPrice(product.price)}
+                      {formatPrice(product.listPrice)}
                     </span>
                   </div>
                   <div

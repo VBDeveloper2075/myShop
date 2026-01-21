@@ -1,5 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getProductById, calculateTransferPrice } from "@/lib/products";
+import { client } from "@/sanity/lib/client";
+import { 
+  calculateTransferPrice, 
+  conditionLabels, 
+  productCategoryLabels,
+  type SanityProduct 
+} from "@/lib/sanity-types";
+
+// Query para obtener producto por ID
+const PRODUCT_BY_ID_QUERY = /* groq */ `
+  *[_type == "product" && _id == $id][0] {
+    _id,
+    title,
+    listPrice,
+    transferPrice,
+    condition,
+    category,
+    inStock
+  }
+`;
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,8 +43,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Obtener producto
-    const product = getProductById(productId);
+    // Obtener producto desde Sanity
+    const product = await client.fetch<SanityProduct | null>(
+      PRODUCT_BY_ID_QUERY,
+      { id: productId }
+    );
+
     if (!product) {
       return NextResponse.json(
         { error: "Producto no encontrado" },
@@ -33,11 +56,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Verificar que el producto esté disponible
+    if (product.inStock === false) {
+      return NextResponse.json(
+        { error: "Este producto ya no está disponible" },
+        { status: 400 }
+      );
+    }
+
     // Calcular precio según método de pago
-    const price =
-      paymentMethod === "transfer"
-        ? calculateTransferPrice(product.price)
-        : product.price;
+    const transferPriceValue = calculateTransferPrice(product.listPrice, product.transferPrice);
+    const price = paymentMethod === "transfer" ? transferPriceValue : product.listPrice;
 
     // Obtener URL base - prioridad: env var > Vercel URL > request host
     const baseUrl = 
@@ -62,8 +91,8 @@ export async function POST(request: NextRequest) {
       items: [
         {
           id: productId,
-          title: product.name,
-          description: `${product.conditionLabel} - ${product.category}`,
+          title: product.title,
+          description: `${conditionLabels[product.condition]} - ${productCategoryLabels[product.category] || product.category}`,
           quantity: 1,
           unit_price: price,
           currency_id: "ARS",
@@ -83,7 +112,7 @@ export async function POST(request: NextRequest) {
       },
       auto_return: "approved",
       external_reference: productId,
-      statement_descriptor: "MY ARCHIVE SHOP",
+      statement_descriptor: "SE VENDE",
     };
 
     console.log("Creating preference...");
@@ -111,7 +140,7 @@ export async function POST(request: NextRequest) {
       initPoint: preference.init_point,
       sandboxInitPoint: preference.sandbox_init_point,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating preference:", error);
     
     return NextResponse.json(

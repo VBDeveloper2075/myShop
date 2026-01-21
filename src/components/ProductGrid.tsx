@@ -1,11 +1,11 @@
 "use client";
 
-import { Product } from "@/lib/products";
+import { SanityProduct } from "@/lib/sanity-types";
 import { ProductCard } from "./ProductCard";
 
 interface ProductGridProps {
-  products: Product[];
-  onProductClick: (product: Product) => void;
+  products: SanityProduct[];
+  onProductClick: (product: SanityProduct) => void;
 }
 
 export function ProductGrid({ products, onProductClick }: ProductGridProps) {
@@ -14,7 +14,7 @@ export function ProductGrid({ products, onProductClick }: ProductGridProps) {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
           <ProductCard
-            key={product.id}
+            key={product._id}
             product={product}
             onClick={onProductClick}
           />
@@ -23,6 +23,3 @@ export function ProductGrid({ products, onProductClick }: ProductGridProps) {
     </section>
   );
 }
-
-
-
